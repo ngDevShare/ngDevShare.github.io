@@ -65,7 +65,7 @@
     <article id="post-简单http协议" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/22/简单http协议/" class="article-date">
-  <time datetime="2019-01-21T16:33:21.984Z" itemprop="datePublished">2019-01-22</time>
+  <time datetime="2019-01-21T16:49:07.874Z" itemprop="datePublished">2019-01-22</time>
 </a>
     
   </div>
@@ -89,110 +89,87 @@
 </ul>
 </blockquote>
 <p>常用的请求方法有：<br>| 序号     |    方法 | 描述  |<br>| :——– | ——–:| :–: |<br>| 1    |     GET |  请求指定的页面信息，并返回实体主体。  |<br>|2     |   HEAD |  类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头  |<br>|3     |   POST | 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。 |<br>|4     |  PUT  |从客户端向服务器传送的数据取代指定的文档的内容。|<br>|5     |  DELETE |请求服务器删除指定的页面。|<br>|6     |  CONNECT |HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。|<br>|7     |  OPTIONS  |允许客户端查看服务器的性能。|<br>|8    |  TRACE   |回显服务器收到的请求，主要用于测试或诊断。|</p>
-<h2 id="1-3Http请求与响应报文分析"><a href="#1-3Http请求与响应报文分析" class="headerlink" title="1.3Http请求与响应报文分析"></a>1.3Http请求与响应报文分析</h2><p>http请求消息结构<br><img src="https://img-blog.csdnimg.cn/20190117141854392.png" alt="在这里插入图片描述"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt; GET https:<span class="comment">//weixin.ngarihealth.com/weixin/wx/mp/wx870abf50c6bc6da3/index.html?code=011pOX162AHk3R0n5t062Qrg262pOX1o&amp;state=STATE HTTP/1.1</span></span><br><span class="line">Host: weixin.ngarihealth.com</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=<span class="number">0.9</span>,image/webp,*<span class="comment">/*;q=0.8</span></span><br><span class="line"><span class="comment">User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36 MicroMessenger/6.5.2.501 NetType/WIFI WindowsWechat QBCore/3.43.901.400 QQBrowser/9.0.2524.400</span></span><br><span class="line"><span class="comment">Accept-Encoding: gzip, deflate</span></span><br><span class="line"><span class="comment">Accept-Language: zh-CN,zh;q=0.8,en-us;q=0.6,en;q=0.5;q=0.4</span></span><br><span class="line"><span class="comment">![在这里插入图片描述](https://img-blog.csdnimg.cn/2019011714210260.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x2eWlueGlhemhleWFuZw==,size_16,color_FFFFFF,t_70)</span></span><br><span class="line"><span class="comment">&gt;HTTP/1.1 200 OK</span></span><br><span class="line"><span class="comment">Date: Thu, 17 Jan 2019 02:19:28 GMT</span></span><br><span class="line"><span class="comment">Content-Type: text/html;charset=utf-8</span></span><br><span class="line"><span class="comment">Connection: keep-alive</span></span><br><span class="line"><span class="comment">Set-Cookie: api=WX; Path=/weixin; HttpOnly</span></span><br><span class="line"><span class="comment">Set-Cookie: client-id=94427; Path=/weixin; HttpOnly</span></span><br><span class="line"><span class="comment">Set-Cookie: WXApp="&#123;\"organId\":\"0\",\"wxTitle\":\"%E7%BA%B3%E9%87%8C%E5%81%A5%E5%BA%B7\",\"personalityTimeStyle\":\"A\",\"orderType\":\"0\",\"customerTel\":\"0571-89911667\",\"showPatientAddress\":\"1\",\"showHospitalNews\":\"0\",\"consultOrderType\":\"0\",\"showRecommendDoctor\":\"1\",\"patientAddTopText\":\"%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4%EF%BC%9A%E4%BB%A5%E4%B8%8A%E4%BF%A1%E6%81%AF%E4%BB%85%E5%AF%B9%E7%9B%B8%E5%85%B3%E5%8C%BB%E7%94%9F%E5%8F%AF%E8%A7%81\",\"canMindGift\":\"1\",\"recommendDoctorFlag\":\"1\",\"type\":\"0\",\"customizedRegister\":\"0\",\"clientId\":\"1\",\"areaOrganHidden\":\"0\",\"manageUnitId\":\"eh\",\"subType\":\"0\",\"doctorHomePageTempId\":\"0\",\"protocalKey\":\"https%3A%2F%2Fyypt.ngarihealth.com%2Fngaridoc%2Fhealth_agreement%2F\",\"forbidDeleteDays\":\"0\",\"showAttentionDoctor\":\"1\",\"tempId\":\"9\",\"doctorScheduleFlag\":\"1\"&#125;"; Version=1; Path=/weixin</span></span><br><span class="line"><span class="comment">Set-Cookie: tk=d2cd1918-e8b5-449e-8ab6-f8fee2d21572; Expires=Sat, 16-Feb-2019 02:19:28 GMT; Path=/weixin; HttpOnly</span></span><br><span class="line"><span class="comment">Set-Cookie: client-id=94427; Path=/weixin; HttpOnly</span></span><br><span class="line"><span class="comment">Set-Cookie: customerHotLine=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/weixin; HttpOnly</span></span><br><span class="line"><span class="comment">Vary: Accept-Encoding</span></span><br><span class="line"><span class="comment">Set-Cookie: SERVERID=029ba46b61bdfa87084c4e6425893da2|1547691568|1547691568;Path=/</span></span><br><span class="line"><span class="comment">Content-Length: 126463</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="1-3-Http请求与响应报文分析"><a href="#1-3-Http请求与响应报文分析" class="headerlink" title="1.3 Http请求与响应报文分析"></a>1.3 Http请求与响应报文分析</h2><p>http请求消息结构</p>
+<p><img src="https://img-blog.csdnimg.cn/20190117141854392.png" alt="在这里插入图片描述"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//weixin.ngarihealth.com/weixin/wx/mp/wx870abf50c6bc6da3/index.html?code=011pOX162AHk3R0n5t062Qrg262pOX1o&amp;state=STATE HTTP/1.1</span></span><br><span class="line">Host: weixin.ngarihealth.com</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=<span class="number">0.9</span>,image/webp,*<span class="comment">/*;q=0.8</span></span><br><span class="line"><span class="comment">User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36 MicroMessenger/6.5.2.501 NetType/WIFI WindowsWechat QBCore/3.43.901.400 QQBrowser/9.0.2524.400</span></span><br><span class="line"><span class="comment">Accept-Encoding: gzip, deflate</span></span><br><span class="line"><span class="comment">Accept-Language: zh-CN,zh;q=0.8,en-us;q=0.6,en;q=0.5;q=0.4</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">HTTP/1.1 200 OK</span></span><br><span class="line"><span class="comment">Date: Thu, 17 Jan 2019 02:19:28 GMT</span></span><br><span class="line"><span class="comment">Content-Type: text/html;charset=utf-8</span></span><br><span class="line"><span class="comment">Connection: keep-alive</span></span><br><span class="line"><span class="comment">Set-Cookie: api=WX; Path=/weixin; HttpOnly</span></span><br><span class="line"><span class="comment">Set-Cookie: client-id=94427; Path=/weixin; HttpOnly</span></span><br><span class="line"><span class="comment">Set-Cookie: WXApp="&#123;\"organId\":\"0\",\"wxTitle\":\"%E7%BA%B3%E9%87%8C%E5%81%A5%E5%BA%B7\",\"personalityTimeStyle\":\"A\",\"orderType\":\"0\",\"customerTel\":\"0571-89911667\",\"showPatientAddress\":\"1\",\"showHospitalNews\":\"0\",\"consultOrderType\":\"0\",\"showRecommendDoctor\":\"1\",\"patientAddTopText\":\"%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4%EF%BC%9A%E4%BB%A5%E4%B8%8A%E4%BF%A1%E6%81%AF%E4%BB%85%E5%AF%B9%E7%9B%B8%E5%85%B3%E5%8C%BB%E7%94%9F%E5%8F%AF%E8%A7%81\",\"canMindGift\":\"1\",\"recommendDoctorFlag\":\"1\",\"type\":\"0\",\"customizedRegister\":\"0\",\"clientId\":\"1\",\"areaOrganHidden\":\"0\",\"manageUnitId\":\"eh\",\"subType\":\"0\",\"doctorHomePageTempId\":\"0\",\"protocalKey\":\"https%3A%2F%2Fyypt.ngarihealth.com%2Fngaridoc%2Fhealth_agreement%2F\",\"forbidDeleteDays\":\"0\",\"showAttentionDoctor\":\"1\",\"tempId\":\"9\",\"doctorScheduleFlag\":\"1\"&#125;"; Version=1; Path=/weixin</span></span><br><span class="line"><span class="comment">Set-Cookie: tk=d2cd1918-e8b5-449e-8ab6-f8fee2d21572; Expires=Sat, 16-Feb-2019 02:19:28 GMT; Path=/weixin; HttpOnly</span></span><br><span class="line"><span class="comment">Set-Cookie: client-id=94427; Path=/weixin; HttpOnly</span></span><br><span class="line"><span class="comment">Set-Cookie: customerHotLine=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/weixin; HttpOnly</span></span><br><span class="line"><span class="comment">Vary: Accept-Encoding</span></span><br><span class="line"><span class="comment">Set-Cookie: SERVERID=029ba46b61bdfa87084c4e6425893da2|1547691568|1547691568;Path=/</span></span><br><span class="line"><span class="comment">Content-Length: 126463</span></span><br></pre></td></tr></table></figure></p>
 <p>Accept  就是告诉服务器端，我接受那些类型的文件<br>Accept-Encoding  这个看起来是接受那些压缩方式的文件<br>Accept-Lanague   告诉服务器能够发送哪些语言<br>Connection       告诉服务器支持keep-alive特性<br>Cookie           每次请求时都会携带上Cookie以方便服务器端识别是否是同一个客户端。Path属性的默认值是根目录，即 ”/” ，不管发出这个cookie的页面在哪个目录下的。可以由程序设置为一定的路径来进一步限制此cookie的作用范围。Expires 属性，这个属性设置此Cookie 的过期日期和时间。<br>Host             用来标识请求服务器上的那个虚拟主机，比如Nginx里面可以定义很多个虚拟主机 那这里就是用来标识要访问那个虚拟主机。<br>User-Agent       用户代理，一般情况是浏览器，也有其他类型，如：wget curl 搜索引擎的蜘蛛等<br>Authorization: 客户端提供给服务器的认证信息；</p>
-<p>常见的http状态码：五种可能的取值<br>1.1××指示信息–表示请求已接收，继续处理<br>2.2×× 成功–表示请求已被成功接收，理解，接受<br>3.3×× 重定向 – 要完成请求必须进行更进一步的操作，与跳转相关<br>4.404 客户端错误–请求有语法错误或请求无法实现<br>5.5×× 服务器端错误，服务器未能实现合法的请求</p>
+<p>常见的http状态码：五种可能的取值</p>
+<ul>
+<li><strong>1××</strong> 指示信息–表示请求已接收，继续处理</li>
+<li><strong>2××</strong> 成功–表示请求已被成功接收，理解，接受</li>
+<li><strong>3××</strong> 重定向 – 要完成请求必须进行更进一步的操作，与跳转相关</li>
+<li><strong>404</strong> 客户端错误–请求有语法错误或请求无法实现</li>
+<li><strong>5××</strong> 服务器端错误，服务器未能实现合法的请求</li>
+</ul>
 <h2 id="1-4一次完整的http事务过程"><a href="#1-4一次完整的http事务过程" class="headerlink" title="1.4一次完整的http事务过程"></a>1.4一次完整的http事务过程</h2><blockquote>
 <p>域名解析 –&gt; 发起TCP的3次握手 –&gt; 建立TCP连接后发起http请求 –&gt; 服务器响应http请求，浏览器得到html代码 –&gt; 浏览器解析html代码，并请求html代码中的资源（如js、css、图片等） –&gt; 浏览器对页面进行渲染呈现给用户</p>
 </blockquote>
 <h3 id="a-域名解析"><a href="#a-域名解析" class="headerlink" title="a.域名解析"></a>a.域名解析</h3><p>Chrome浏览器缓存（chrome://net-internals/#dns 查看缓存）—&gt;操作系统DNS缓存(ipconfig /displaydns) —&gt;hosts文件(C:\Windows\System32\drivers\etc)—&gt;本地dns服务器解析,再到根域名服务器，再到顶级域名服务器，二级等</p>
-<h3 id="b-发起3次握手"><a href="#b-发起3次握手" class="headerlink" title="b.发起3次握手"></a>b.发起3次握手</h3><p><img src="https://img-blog.csdnimg.cn/20190117095611511.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x2eWlueGlhemhleWFuZw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h3 id="c-TCP3次握手之后，浏览器发起了http的请求"><a href="#c-TCP3次握手之后，浏览器发起了http的请求" class="headerlink" title="c.TCP3次握手之后，浏览器发起了http的请求"></a>c.TCP3次握手之后，浏览器发起了http的请求</h3><h3 id="d-服务器端响应http请求，浏览器得到html代码"><a href="#d-服务器端响应http请求，浏览器得到html代码" class="headerlink" title="d.服务器端响应http请求，浏览器得到html代码"></a>d.服务器端响应http请求，浏览器得到html代码</h3><pre><code>&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;
-&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
-&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;/&gt;
-&lt;title&gt;纳里健康&lt;/title&gt;
-&lt;style&gt;
-    @-webkit-keyframes s-loading{
-        0%{
-            -webkit-transform: rotate(0deg);
-        }
-        50%{
-            -webkit-transform: rotate(180deg);
-        }
-        100%{
-            -webkit-transform: rotate(360deg);
-        }
-    }
-    @-moz-keyframes s-loading{
-        0%{
-            -moz-transform: rotate(0deg);
-        }
-        50%{
-            -moz-transform: rotate(180deg);
-        }
-        100%{
-            -moz-transform: rotate(360deg);
-        }
-    }
-    .startup-loading{
-        -webkit-transform-origin: center center;
-        -webkit-animation-name: s-loading;
-        -webkit-animation-duration: 1.2s;
-        -webkit-animation-timing-function: linear;
-        -webkit-animation-iteration-count: infinite;
-        -moz-transform-origin: center center;
-        -moz-animation-name: s-loading;
-        -moz-animation-duration: 1.2s;
-        -moz-animation-timing-function: linear;
-        -moz-animation-iteration-count: infinite;
-        display: inline-block;
-        width: 50px;
-        opacity: 0.7;
-    }
-    body{margin:0;overflow: hidden;}
-    .idxBox{position: absolute;box-sizing:border-box; width: 100%;text-align: center;font-family:&quot;Microsoft YaHei&quot;;font-weight:400;line-height:1.4;color:#000;}
-    .idxBg{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical; -webkit-flex-direction: column;flex-direction: column;-webkit-box-align: center;-webkit-box-pack: center; -webkit-align-items:center;-webkit-align-items:center;align-items:center;-webkit-box-pack: center; -webkit-justify-content:center;justify-content:center; -webkit-animation-duration: 450ms;height: 100%;}
-    .idxBg .picture{-webkit-box-flex:0;-webkit-flex-grow:0;-webkit-flex-shrink:0;flex:none;margin-top:-48px; z-index: 10;}
-    .idxBg .picture img{width:100%;}
-    .idxBg .loading{bottom:20%;z-index: 11;visibility:hidden;}
-    @media screen and (min-height:736px){
-        .idxBg .picture{margin-top:0}
-    }
-    @media screen and (max-width:320px) and (max-height:480px){
-        .idxBg .picture{margin-top:-114px;}
-    }
-&lt;/style&gt;&lt;/head&gt;&lt;body ng-controller=&quot;rootController&quot;&gt;&lt;div id=&quot;startup&quot;&gt;
-&lt;div class=&quot;idxBox idxBg&quot;&gt;&lt;div class=&quot;picture&quot;&gt;&lt;img src=&quot;&quot;&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre><p></p>
-<p><script type="text/javascript" src="ssdev.boot-min,eh.wx.health.index.jsc"></script><br><br></p>
-<h3 id="e-浏览器解析html代码，并请求html代码中的资源"><a href="#e-浏览器解析html代码，并请求html代码中的资源" class="headerlink" title="e.浏览器解析html代码，并请求html代码中的资源"></a>e.浏览器解析html代码，并请求html代码中的资源</h3><h3 id="f-浏览器对页面进行渲染呈现"><a href="#f-浏览器对页面进行渲染呈现" class="headerlink" title="f.浏览器对页面进行渲染呈现"></a>f.浏览器对页面进行渲染呈现</h3><h1 id="2-session与cookie"><a href="#2-session与cookie" class="headerlink" title="2.session与cookie"></a>2.session与cookie</h1><h2 id="2-1session-简介"><a href="#2-1session-简介" class="headerlink" title="2.1session 简介"></a>2.1session 简介</h2><p>1.服务器端的机制，在服务器端保存的信息<br> 2.解析客户端请求并操作session id ,按需保存状态信息 如果客户端请求中有这个sessionId 则说明以前已经为该客户创建过sessionId了，sessionId 是一个不会重复 且不容易造的<br> 3.session的实现方式<br> a.使用cookie来实现，携带在cookie头中<br> b.使用url回写来实现</p>
-<h2 id="2-2-cookie"><a href="#2-2-cookie" class="headerlink" title="2.2 cookie"></a>2.2 cookie</h2><p> 因为http是无状态的，那么每次访问某个有登录需求的页面的时候，都要不厌其烦的输入账号和密码，现实生活中引入了某些机制让它具备了状态，<br> 1.cookie 是由服务器发送给客户端的特殊信息，以文本的形式存放在客户端<br> 客户端每次向服务器发送请求的时候都会提交，服务器响应，存放在http 响应头中<br> 2.客户端再次请求的时候，会把cookie回发，http请求头中<br> 3.服务器接收到后，会解析Cookie生成与客户端相对应的内容，例如有些浏览器中的选项请记住我，之后就不用再次登录了</p>
-<blockquote>
-<p>cookie的内容主要包括：名字，值，过期时间，路径和域。路径与域一起构成cookie的作用范围。<br>1）Name 和 Value 属性由程序设定,默认值都是空引用。<br>2）Domain属性的默认值为当前URL的域名部分，不管发出这个cookie的页面在哪个目录下的。<br>3）Path属性的默认值是根目录，即 ”/” ，不管发出这个cookie的页面在哪个目录下的。可以由程序设置为一定的路径来进一步限制此cookie的作用范围。<br>4）Expires 属性，这个属性设置此Cookie 的过期日期和时间。</p>
+<h3 id="b-发起3次握手"><a href="#b-发起3次握手" class="headerlink" title="b.发起3次握手"></a>b.发起3次握手</h3><p><img src="https://img-blog.csdnimg.cn/20190117095611511.png" alt="在这里插入图片描述"></p>
+<h3 id="c-TCP3次握手之后，浏览器发起了http的请求"><a href="#c-TCP3次握手之后，浏览器发起了http的请求" class="headerlink" title="c.TCP3次握手之后，浏览器发起了http的请求"></a>c.TCP3次握手之后，浏览器发起了http的请求</h3><h3 id="d-服务器端响应http请求，浏览器得到html代码"><a href="#d-服务器端响应http请求，浏览器得到html代码" class="headerlink" title="d.服务器端响应http请求，浏览器得到html代码"></a>d.服务器端响应http请求，浏览器得到html代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span><span class="tag">&lt;<span class="name">html</span>&gt;</span><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> <span class="attr">content</span>=<span class="string">"telephone=no"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">title</span>&gt;</span>纳里健康<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">       @-webkit-keyframes s-loading&#123;</span></span><br><span class="line"><span class="undefined">           0%&#123;</span></span><br><span class="line"><span class="undefined">               -webkit-transform: rotate(0deg);</span></span><br><span class="line"><span class="undefined">           &#125;</span></span><br><span class="line"><span class="undefined">           50%&#123;</span></span><br><span class="line"><span class="undefined">               -webkit-transform: rotate(180deg);</span></span><br><span class="line"><span class="undefined">           &#125;</span></span><br><span class="line"><span class="undefined">           100%&#123;</span></span><br><span class="line"><span class="undefined">               -webkit-transform: rotate(360deg);</span></span><br><span class="line"><span class="undefined">           &#125;</span></span><br><span class="line"><span class="undefined">       &#125;</span></span><br><span class="line"><span class="undefined">       @-moz-keyframes s-loading&#123;</span></span><br><span class="line"><span class="undefined">           0%&#123;</span></span><br><span class="line"><span class="undefined">               -moz-transform: rotate(0deg);</span></span><br><span class="line"><span class="undefined">           &#125;</span></span><br><span class="line"><span class="undefined">           50%&#123;</span></span><br><span class="line"><span class="undefined">               -moz-transform: rotate(180deg);</span></span><br><span class="line"><span class="undefined">           &#125;</span></span><br><span class="line"><span class="undefined">           100%&#123;</span></span><br><span class="line"><span class="undefined">               -moz-transform: rotate(360deg);</span></span><br><span class="line"><span class="undefined">           &#125;</span></span><br><span class="line"><span class="undefined">       &#125;</span></span><br><span class="line"><span class="undefined">       .startup-loading&#123;</span></span><br><span class="line"><span class="undefined">           -webkit-transform-origin: center center;</span></span><br><span class="line"><span class="undefined">           -webkit-animation-name: s-loading;</span></span><br><span class="line"><span class="undefined">           -webkit-animation-duration: 1.2s;</span></span><br><span class="line"><span class="undefined">           -webkit-animation-timing-function: linear;</span></span><br><span class="line"><span class="undefined">           -webkit-animation-iteration-count: infinite;</span></span><br><span class="line"><span class="undefined">           -moz-transform-origin: center center;</span></span><br><span class="line"><span class="undefined">           -moz-animation-name: s-loading;</span></span><br><span class="line"><span class="undefined">           -moz-animation-duration: 1.2s;</span></span><br><span class="line"><span class="undefined">           -moz-animation-timing-function: linear;</span></span><br><span class="line"><span class="undefined">           -moz-animation-iteration-count: infinite;</span></span><br><span class="line"><span class="undefined">           display: inline-block;</span></span><br><span class="line"><span class="undefined">           width: 50px;</span></span><br><span class="line"><span class="undefined">           opacity: 0.7;</span></span><br><span class="line"><span class="undefined">       &#125;</span></span><br><span class="line"><span class="undefined">       body&#123;margin:0;overflow: hidden;&#125;</span></span><br><span class="line"><span class="undefined">       .idxBox&#123;position: absolute;box-sizing:border-box; width: 100%;text-align: center;font-family:"Microsoft YaHei";font-weight:400;line-height:1.4;color:#000;&#125;</span></span><br><span class="line"><span class="undefined">       .idxBg&#123;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical; -webkit-flex-direction: column;flex-direction: column;-webkit-box-align: center;-webkit-box-pack: center; -webkit-align-items:center;-webkit-align-items:center;align-items:center;-webkit-box-pack: center; -webkit-justify-content:center;justify-content:center; -webkit-animation-duration: 450ms;height: 100%;&#125;</span></span><br><span class="line"><span class="undefined">       .idxBg .picture&#123;-webkit-box-flex:0;-webkit-flex-grow:0;-webkit-flex-shrink:0;flex:none;margin-top:-48px; z-index: 10;&#125;</span></span><br><span class="line"><span class="undefined">       .idxBg .picture img&#123;width:100%;&#125;</span></span><br><span class="line"><span class="undefined">       .idxBg .loading&#123;bottom:20%;z-index: 11;visibility:hidden;&#125;</span></span><br><span class="line"><span class="undefined">       @media screen and (min-height:736px)&#123;</span></span><br><span class="line"><span class="undefined">           .idxBg .picture&#123;margin-top:0&#125;</span></span><br><span class="line"><span class="undefined">       &#125;</span></span><br><span class="line"><span class="undefined">       @media screen and (max-width:320px) and (max-height:480px)&#123;</span></span><br><span class="line"><span class="undefined">           .idxBg .picture&#123;margin-top:-114px;&#125;</span></span><br><span class="line"><span class="undefined">       &#125;</span></span><br><span class="line"><span class="undefined">   </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-controller</span>=<span class="string">"rootController"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"startup"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"idxBox idxBg"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"picture"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="e-浏览器解析html代码，并请求html代码中的资源"><a href="#e-浏览器解析html代码，并请求html代码中的资源" class="headerlink" title="e.浏览器解析html代码，并请求html代码中的资源"></a>e.浏览器解析html代码，并请求html代码中的资源</h3><h3 id="f-浏览器对页面进行渲染呈现"><a href="#f-浏览器对页面进行渲染呈现" class="headerlink" title="f.浏览器对页面进行渲染呈现"></a>f.浏览器对页面进行渲染呈现</h3><h1 id="2-session与cookie"><a href="#2-session与cookie" class="headerlink" title="2.session与cookie"></a>2.session与cookie</h1><h2 id="2-1session-简介"><a href="#2-1session-简介" class="headerlink" title="2.1session 简介"></a>2.1session 简介</h2><ul>
+<li>服务器端的机制，在服务器端保存的信息</li>
+<li>解析客户端请求并操作session id ,按需保存状态信息 如果客户端请求中有这个sessionId 则说明以前已经为该客户创建过sessionId了，sessionId 是一个不会重复 且不容易造的</li>
+<li>session的实现方式</li>
+</ul>
+<ul>
+<li>使用cookie来实现，携带在cookie头中</li>
+<li>使用url回写来实现<h2 id="2-2-cookie"><a href="#2-2-cookie" class="headerlink" title="2.2 cookie"></a>2.2 cookie</h2>因为http是无状态的，那么每次访问某个有登录需求的页面的时候，都要不厌其烦的输入账号和密码，现实生活中引入了某些机制让它具备了状态，</li>
+<li>cookie 是由服务器发送给客户端的特殊信息，以文本的形式存放在客户端<br>客户端每次向服务器发送请求的时候都会提交，服务器响应，存放在http 响应头中</li>
+<li>客户端再次请求的时候，会把cookie回发，http请求头中</li>
+<li>服务器接收到后，会解析Cookie生成与客户端相对应的内容，例如有些浏览器中的选项请记住我，之后就不用再次登录了<blockquote>
+<p>cookie的内容主要包括：名字，值，过期时间，路径和域。路径与域一起构成cookie的作用范围。</p>
 </blockquote>
+</li>
+<li>Name 和 Value 属性由程序设定,默认值都是空引用。</li>
+<li>Domain属性的默认值为当前URL的域名部分，不管发出这个cookie的页面在哪个目录下的。</li>
+<li>Path属性的默认值是根目录，即 ”/” ，不管发出这个cookie的页面在哪个目录下的。可以由程序设置为一定的路径来进一步限制此cookie的作用范围。</li>
+<li>Expires 属性，这个属性设置此Cookie 的过期日期和时间。</li>
+</ul>
 <blockquote>
 <p>若不设置过期时间，则表示这个cookie的生命期为浏览器会话期间，关闭浏览器窗口，cookie就消失。这种生命期为浏览器会话期的cookie被称为会话cookie。会话cookie一般不存储在硬盘上而是保存在内存里，当然这种行为并不是规范规定的。若设置了过期时间，浏览器就会把cookie保存到硬盘上，关闭后再次打开浏览器，这些cookie仍然有效直到超过设定的过期时间。存储在硬盘上的cookie可以在浏览器的不同进程间共享。<br>Set-Cookie: reg_fb_gate=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.foo.com; httponly （删除Cookie)</p>
 </blockquote>
-<h2 id="2-3-区别："><a href="#2-3-区别：" class="headerlink" title="2.3 区别："></a>2.3 区别：</h2><blockquote>
-<p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>2、cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，考虑到安全应当使用session。<br>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie。<br>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。<br>5、可以考虑将登陆信息等重要信息存放为session，其他信息如果需要保留，可以放在cookie中。</p>
-</blockquote>
-<h1 id="3-http与和https"><a href="#3-http与和https" class="headerlink" title="3.http与和https"></a>3.http与和https</h1><h2 id="3-1https简介"><a href="#3-1https简介" class="headerlink" title="3.1https简介"></a>3.1https简介</h2><h3 id="a-HTTPS握手过程"><a href="#a-HTTPS握手过程" class="headerlink" title="a.HTTPS握手过程"></a>a.HTTPS握手过程</h3><p>HTTPS在HTTP的基础上加入了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密</p>
-<blockquote>
+<h2 id="2-3-区别："><a href="#2-3-区别：" class="headerlink" title="2.3 区别："></a>2.3 区别：</h2><ul>
+<li>cookie数据存放在客户的浏览器上，session数据放在服务器上。</li>
+<li>cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，考虑到安全应当使用session。</li>
+<li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie。</li>
+<li>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</li>
+<li>可以考虑将登陆信息等重要信息存放为session，其他信息如果需要保留，可以放在cookie中。<h1 id="3-http与和https"><a href="#3-http与和https" class="headerlink" title="3.http与和https"></a>3.http与和https</h1><h2 id="3-1https简介"><a href="#3-1https简介" class="headerlink" title="3.1https简介"></a>3.1https简介</h2><h3 id="a-HTTPS握手过程"><a href="#a-HTTPS握手过程" class="headerlink" title="a.HTTPS握手过程"></a>a.HTTPS握手过程</h3>HTTPS在HTTP的基础上加入了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密<blockquote>
 <p>为什么HTTPS是安全的？<br>在HTTPS握手的第四步中，如果站点的证书是不受信任的，会显示出现下面确认界面，确认了网站的真实性。非对称加密算法对其加密。非对称加密算法会生成公钥和私钥，公钥只能用于加密数据，因此可以随意传输，而服务器的私钥用于对数据进行解密  另外第六和八步，使用客户端私钥加密解密，保证了数据传输的安全。</p>
 </blockquote>
+</li>
+</ul>
 <p><img src="https://images2015.cnblogs.com/blog/555379/201602/555379-20160210231313448-2027205313.png" alt="在这里插入图片描述"></p>
 <blockquote>
 <ol>
 <li>客户端发起HTTPS请求2. 服务端的配置<br>采用HTTPS协议的服务器必须要有一套数字证书，可以是自己制作或者CA证书。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用CA证书则不会弹出提示页面。这套证书其实就是一对公钥和私钥。公钥给别人加密使用，私钥给自己解密使用。3. 传送证书这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等。4. 客户端解析证书<br>部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等，如果发现异常，则会弹出一个警告框，提示证书存在问题。如果证书没有问题，那么就生成一个随即值，然后用证书对该随机值进行加密。5. 传送加密信息这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。6. 服务段解密信息服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密。所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。7. 传输加密后的信息这部分信息是服务段用私钥加密后的信息，可以在客户端被还原。8. 客户端解密信息客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。</li>
 </ol>
 </blockquote>
-<h3 id="b-安全问题"><a href="#b-安全问题" class="headerlink" title="b.安全问题"></a>b.安全问题</h3><blockquote>
-<p> 对通信加密<br>HTTPS有两种，绿色的HTTPS，绿色的HTTPS表示网站有证书，并且与网站服务器进行通信时数据是加密的，另外还有红色HTTPS，红色HTTPS表示通信时依然是加密的，并且网站有证书，但是证书可能过期或者没有验证过，所以如果在浏览网页时看到有网站的网址前面有红色HTTPS的话，最好不要在这种网站中输入任何账号密码。<br>对通信内容加密<br> 例如AES128 + MD5加密</p>
+<h3 id="b-安全问题"><a href="#b-安全问题" class="headerlink" title="b.安全问题"></a>b.安全问题</h3><ul>
+<li><blockquote>
+<p>对通信加密<br>HTTPS有两种，绿色的HTTPS，绿色的HTTPS表示网站有证书，并且与网站服务器进行通信时数据是加密的，另外还有红色HTTPS，红色HTTPS表示通信时依然是加密的，并且网站有证书，但是证书可能过期或者没有验证过，所以如果在浏览网页时看到有网站的网址前面有红色HTTPS的话，最好不要在这种网站中输入任何账号密码。</p>
 </blockquote>
-<h2 id="3-2-fiddler抓包原理："><a href="#3-2-fiddler抓包原理：" class="headerlink" title="3.2 fiddler抓包原理："></a>3.2 fiddler抓包原理：</h2><p><img src="https://img-blog.csdnimg.cn/20190117125727331.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x2eWlueGlhemhleWFuZw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>Fiddler抓取HTTPS协议主要由以下几步进行：</p>
-<blockquote>
-<p>第一步，Fiddler截获客户端发送给服务器的HTTPS请求，Fiddler伪装成客户端向服务器发送请求进行握手 。<br>  第二步，服务器发回相应，Fiddler获取到服务器的CA证书， 用根证书公钥进行解密， 验证服务器数据签名， 获取到服务器CA证书公钥。然后Fiddler伪造自己的CA证书， 冒充服务器证书传递给客户端浏览器。<br> 第三步，与普通过程中客户端的操作相同，客户端根据返回的数据进行证书校验、生成密码Pre_master、用Fiddler伪造的证书公钥加密，并生成HTTPS通信用的对称密钥enc_key。<br> 第四步，客户端将重要信息传递给服务器， 又被Fiddler截获。Fiddler将截获的密文用自己伪造证书的私钥解开， 获得并计算得到HTTPS通信用的对称密钥enc_key。Fiddler将对称密钥用服务器证书公钥加密传递给服务器。<br>第五步，与普通过程中服务器端的操作相同，服务器用私钥解开后建立信任，然后再发送加密的握手消息给客户端。<br> 第六步，Fiddler截获服务器发送的密文， 用对称密钥解开， 再用自己伪造证书的私钥加密传给客户端。<br> 第七步，客户端拿到加密信息后，用公钥解开，验证HASH。握手过程正式完成，客户端与服务器端就这样建立了”信任“。<br>在之后的正常加密通信过程中，Fiddler如何在服务器与客户端之间充当第三者呢？<br>服务器—&gt;客户端：Fiddler接收到服务器发送的密文， 用对称密钥解开， 获得服务器发送的明文。再次加密， 发送给客户端。<br> 客户端—&gt;服务端：客户端用对称密钥加密，被Fiddler截获后，解密获得明文。再次加密，发送给服务器端。由于Fiddler一直拥有通信用对称密钥enc_key， 所以在整个HTTPS通信过程中信息对其透明。</p>
+</li>
+<li><blockquote>
+<p>对通信内容加密<br>例如AES128 + MD5加密</p>
 </blockquote>
-<h2 id="3-3-http与https的区别"><a href="#3-3-http与https的区别" class="headerlink" title="3.3 http与https的区别"></a>3.3 http与https的区别</h2><blockquote>
+</li>
+</ul>
+<h2 id="3-2-fiddler抓包原理："><a href="#3-2-fiddler抓包原理：" class="headerlink" title="3.2 fiddler抓包原理："></a>3.2 fiddler抓包原理：</h2><p><img src="https://img-blog.csdnimg.cn/20190117125727331.png" alt="在这里插入图片描述"><br>Fiddler抓取HTTPS协议主要由以下几步进行：</p>
 <ol>
+<li>Fiddler截获客户端发送给服务器的HTTPS请求，Fiddler伪装成客户端向服务器发送请求进行握手 。</li>
+<li>服务器发回相应，Fiddler获取到服务器的CA证书， 用根证书公钥进行解密， 验证服务器数据签名， 获取到服务器CA证书公钥。然后Fiddler伪造自己的CA证书， 冒充服务器证书传递给客户端浏览器。</li>
+<li>与普通过程中客户端的操作相同，客户端根据返回的数据进行证书校验、生成密码Pre_master、用Fiddler伪造的证书公钥加密，并生成HTTPS通信用的对称密钥enc_key。</li>
+<li>客户端将重要信息传递给服务器， 又被Fiddler截获。Fiddler将截获的密文用自己伪造证书的私钥解开， 获得并计算得到HTTPS通信用的对称密钥enc_key。Fiddler将对称密钥用服务器证书公钥加密传递给服务器。</li>
+<li>与普通过程中服务器端的操作相同，服务器用私钥解开后建立信任，然后再发送加密的握手消息给客户端。</li>
+<li>Fiddler截获服务器发送的密文， 用对称密钥解开， 再用自己伪造证书的私钥加密传给客户端。</li>
+<li>客户端拿到加密信息后，用公钥解开，验证HASH。握手过程正式完成，客户端与服务器端就这样建立了”信任“。<br>在之后的正常加密通信过程中，Fiddler如何在服务器与客户端之间充当第三者呢？<br>服务器—&gt;客户端：Fiddler接收到服务器发送的密文， 用对称密钥解开， 获得服务器发送的明文。再次加密， 发送给客户端。<br>客户端—&gt;服务端：客户端用对称密钥加密，被Fiddler截获后，解密获得明文。再次加密，发送给服务器端。由于Fiddler一直拥有通信用对称密钥enc_key， 所以在整个HTTPS通信过程中信息对其透明。<h2 id="3-3-http与https的区别"><a href="#3-3-http与https的区别" class="headerlink" title="3.3 http与https的区别"></a>3.3 http与https的区别</h2></li>
+</ol>
+<ul>
 <li>https协议需要到ca申请证书或自制证书。</li>
 <li>http的信息是明文传输，https则是具有安全性的ssl加密。</li>
-<li>http是直接与TCP进行数据传输，而https是经过一层SSL（OSI表示层），用的端口也不一样，前者是80（需要国内备案），后者是443。<br>4.HTTPS=HTTP+加密+认证+完整性保护，较http安全</li>
-</ol>
-</blockquote>
+<li>http是直接与TCP进行数据传输，而https是经过一层SSL（OSI表示层），用的端口也不一样，前者是80（需要国内备案），后者是443。</li>
+<li>HTTPS=HTTP+加密+认证+完整性保护，较http安全</li>
+</ul>
 
       
     </div>
