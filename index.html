@@ -65,7 +65,7 @@
     <article id="post-简单http协议" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/22/简单http协议/" class="article-date">
-  <time datetime="2019-01-21T16:25:29.944Z" itemprop="datePublished">2019-01-22</time>
+  <time datetime="2019-01-21T16:27:26.501Z" itemprop="datePublished">2019-01-22</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
 <h1 id="1-HTTP协议简介"><a href="#1-HTTP协议简介" class="headerlink" title="1.HTTP协议简介"></a>1.HTTP协议简介</h1><h2 id="1-1定义"><a href="#1-1定义" class="headerlink" title="1.1定义"></a>1.1定义</h2><blockquote>
 <p>http协议即超文本传输协议，它是一个属于应用层的协议，HTTP是一个构建在传输层的TCP协议之上的应用层的协议，在这个层的协议，是一种网络交互需要遵守的一种协议规范。基于请求与响应的无状态的应用层的协议，常基于TCP的连接方式；http1.1版本中给出一种持续连接的机制，keep alive,绝大多数web开发都是构建在http协议之上的web应用；</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/20190117160942147.png" alt="在这里插入图片描述"></p>
+<p><img src="http://img-blog.csdnimg.cn/20190117160942147.png" alt="在这里插入图片描述"></p>
 <h2 id="1-2特点"><a href="#1-2特点" class="headerlink" title="1.2特点"></a>1.2特点</h2><blockquote>
 <p>1.支持客户/服务器模式；工作于客户端服务端架构之上，浏览器作为http客户端通过url向http服务端即web服务器发送所有请求，web服务器根据接收到的请求向客户端发送响应信息；<br>2.简单快速，客户端向服务器请求服务的时候，只需传送请求方法和路径<br>3.灵活<br>http允许传输任意类型的数据对象正在传输的数据类型由content-type加以标记<br>4.无连接<br>无连接的含义是限制每次连接只处理一个请求，服务器处理完客户的请求，并收到客户的应答以后，即断开连接，采用这种方式可以节省传输时间，从http1.1起，默认使用长连接，即服务器需要等待一定时间后才断开连接，以保证连接特性，虽然目前的一些技术 如keep-alive使用了长连接优化效率，但这些都是属于http请求之外的，也就是说在每个独立的http请求中，你是无法知道当前的http是否处于长连接的状态；因此应该认为http请求在结束后，连接就会关闭；长连接可以理解为下层实现对上层透明<br>5.无状态<br>http协议是无状态协议，是指协议对于事务处理没有记忆能力，缺少状态意味着服务器无法从连接上跟踪会话。</p>
 </blockquote>
