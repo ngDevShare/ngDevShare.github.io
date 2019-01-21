@@ -62,6 +62,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java first look" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/21/java first look/" class="article-date">
+  <time datetime="2019-01-21T14:50:09.074Z" itemprop="datePublished">2019-01-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><p>语言的种类: jvm语言, java,groovy,kotlin,clojure,scala<br>visual J++ 如何变成C#<br>动态语言：python，ruby，js，php、<br>非语言的：HTML CSS ini properties文件</p>
+<p>TIOBE <a href="https://www.tiobe.com/tiobe-index/" target="_blank" rel="noopener">排行</a></p>
+<p>与其他语言相比，Java最大的优势或许在于完善的生态系统：开发者所需要的一切，几乎都能从这个生态系统中找到。世界上累计有150亿台设备运行Java，全球Java开发者的数量超过1000万人，Java不仅构成了大量开源平台的基础，也已成为软件文化中不可或缺的一部分。</p>
+<ul>
+<li>为什么需要jvm</li>
+<li>为什么区分jre jdk</li>
+<li>生成运行一个class文件（携带外部的jar包呢）</li>
+<li>classpath</li>
+<li>工具maven</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javac -verbose -cp C:\Users\cqian\Desktop\share;lombok-1.16.18.jar Person.java 等同于</span><br><span class="line">javac -cp .;lombok-1.16.18.jar Person.java</span><br></pre></td></tr></table></figure>
+<p>包的路径其实是无意义的，仅仅为了表示namespace，并不对应目录<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 含有package名称的编译</span></span><br><span class="line">javac -d . -cp lombok-<span class="number">1.16</span>.18.jar Util.java</span><br><span class="line">java b.Util</span><br></pre></td></tr></table></figure></p>
+<h3 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h3><p>private default protect public<br>protect记住范围是保护的<strong>子类</strong></p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/" target="_blank" rel="noopener">StackEdit</a>.</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/21/java first look/" data-id="cjr6g6j6200008bpvdgasnasx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-简单http协议" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/21/简单http协议/" class="article-date">
@@ -313,6 +355,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/01/21/java first look/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2019/01/21/简单http协议/">(no title)</a>
