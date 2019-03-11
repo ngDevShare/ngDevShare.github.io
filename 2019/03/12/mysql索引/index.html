@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>OurDevShare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="mysql 索引翻译MySQL 5.6 Reference Manual / Optimization / Optimization and Indexes章节 8.38.3.1 How MySQL Uses Indexes 8.3.2 Primary Key Optimization 8.3.3 Foreign Key Optimization 8.3.4 Column Indexes 8.3.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OurDevShare">
+<meta property="og:url" content="http://yoursite.com/2019/03/12/mysql索引/index.html">
+<meta property="og:site_name" content="OurDevShare">
+<meta property="og:description" content="mysql 索引翻译MySQL 5.6 Reference Manual / Optimization / Optimization and Indexes章节 8.38.3.1 How MySQL Uses Indexes 8.3.2 Primary Key Optimization 8.3.3 Foreign Key Optimization 8.3.4 Column Indexes 8.3.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-11T20:12:15.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OurDevShare">
+<meta name="twitter:description" content="mysql 索引翻译MySQL 5.6 Reference Manual / Optimization / Optimization and Indexes章节 8.38.3.1 How MySQL Uses Indexes 8.3.2 Primary Key Optimization 8.3.3 Foreign Key Optimization 8.3.4 Column Indexes 8.3.">
+  
+    <link rel="alternate" href="/atom.xml" title="OurDevShare" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">OurDevShare</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">只有秃头才能变强</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mysql索引" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/12/mysql索引/" class="article-date">
+  <time datetime="2019-03-11T20:12:15.984Z" itemprop="datePublished">2019-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="mysql-索引翻译"><a href="#mysql-索引翻译" class="headerlink" title="mysql 索引翻译"></a>mysql 索引翻译</h2><h3 id="MySQL-5-6-Reference-Manual-Optimization-Optimization-and-Indexes"><a href="#MySQL-5-6-Reference-Manual-Optimization-Optimization-and-Indexes" class="headerlink" title="MySQL 5.6 Reference Manual / Optimization / Optimization and Indexes"></a><a href="https://dev.mysql.com/doc/refman/5.6/en/" target="_blank" rel="noopener">MySQL 5.6 Reference Manual</a> / <a href="https://dev.mysql.com/doc/refman/5.6/en/optimization.html" target="_blank" rel="noopener">Optimization</a> / Optimization and Indexes</h3><h3 id="章节-8-3"><a href="#章节-8-3" class="headerlink" title="章节 8.3"></a>章节 8.3</h3><p><a href="https://dev.mysql.com/doc/refman/5.6/en/mysql-indexes.html" target="_blank" rel="noopener">8.3.1 How MySQL Uses Indexes</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.6/en/primary-key-optimization.html" target="_blank" rel="noopener">8.3.2 Primary Key Optimization</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.6/en/foreign-key-optimization.html" target="_blank" rel="noopener">8.3.3 Foreign Key Optimization</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.6/en/column-indexes.html" target="_blank" rel="noopener">8.3.4 Column Indexes</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.6/en/multiple-column-indexes.html" target="_blank" rel="noopener">8.3.5 Multiple-Column Indexes</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.6/en/verifying-index-usage.html" target="_blank" rel="noopener">8.3.6 Verifying Index Usage</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.6/en/index-statistics.html" target="_blank" rel="noopener">8.3.7 InnoDB and MyISAM Index Statistics Collection</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.6/en/index-btree-hash.html" target="_blank" rel="noopener">8.3.8 Comparison of B-Tree and Hash Indexes</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.6/en/index-extensions.html" target="_blank" rel="noopener">8.3.9 Use of Index Extensions</a></p>
+<p>最好的提升select 性能的操作是在一个或者多个column上增加索引。索引的作用就像是指向表行的指针，能让查询语句快速的决定哪一行更好的匹配我们sql中的where语句，并检索这些行中的列的数据。所有的mysql数据类型都可以被索引。</p>
+<p>尽管可以尝试为没一个列增加索引，但是没必要的索引在mysql选择使用哪个索引时候会浪费空间和时间。索引也会整增加insert、update、delete的性能花费，因为insert、update、delete更新内容索引也得更新。你必须找到最佳的平衡点来使用最适合的索引组合来达到最佳的查询性能。</p>
+<blockquote>
+<p>The best way to improve the performance of  <a href="https://dev.mysql.com/doc/refman/5.6/en/select.html" title="13.2.9 SELECT Syntax" target="_blank" rel="noopener"><code>SELECT</code></a>  operations is to create indexes on one or more of the columns that are tested in the query. The index entries act like pointers to the table rows, allowing the query to quickly determine which rows match a condition in the  <code>WHERE</code>  clause, and retrieve the other column values for those rows. All MySQL data types can be indexed.</p>
+</blockquote>
+<blockquote>
+<p>Although it can be tempting to create an indexes for every possible column used in a query, unnecessary indexes waste space and waste time for MySQL to determine which indexes to use. Indexes also add to the cost of inserts, updates, and deletes because each index must be updated. You must find the right balance to achieve fast queries using the optimal set of indexes.</p>
+</blockquote>
+<h3 id="8-3-1-mysql如何使用索引"><a href="#8-3-1-mysql如何使用索引" class="headerlink" title="8.3.1 mysql如何使用索引"></a>8.3.1 mysql如何使用索引</h3><p>索引是通过指定的列的值来查找特定的行。如果没有mysql索引，MySql必须必须从第一条记录开始，读取整个表来找个相关的行，表越大，花费越大。如果某个列有个索引，MySql能快速的决定进入数据中间的点而不是寻找整个数据。这比顺序的查询每行的记录快对了。</p>
+<blockquote>
+<p>Indexes are used to find rows with specific column values quickly. Without an index, MySQL must begin with the first row and then read through the entire table to find the relevant rows. The larger the table, the more this costs. If the table has an index for the columns in question, MySQL can quickly determine the position to seek to in the middle of the data file without having to look at all the data. This is much faster than reading every row sequentially.</p>
+</blockquote>
+<p>大多数mysql索引（’Primary KEY’ ，’UNIQUE’,”INDEX” 和 “FULLTEXT”）使用<a href="https://dev.mysql.com/doc/refman/5.6/en/glossary.html#glos_b_tree" title="B-tree" target="_blank" rel="noopener">b-tree</a>数据结构存储。看一下例外们：spatial data类型上的索引使用R-trees；<code>MEMORY</code>表支持<a href="https://dev.mysql.com/doc/refman/5.6/en/glossary.html#glos_hash_index" title="hash index" target="_blank" rel="noopener">hash indexes</a>; <code>InnoDB</code>使用反转list实现<code>FULLTEXT</code>全文索引。</p>
+<blockquote>
+<p>Most MySQL indexes (<code>PRIMARY KEY</code>,  <code>UNIQUE</code>,  <code>INDEX</code>, and  <code>FULLTEXT</code>) are stored in  <a href="https://dev.mysql.com/doc/refman/5.6/en/glossary.html#glos_b_tree" title="B-tree" target="_blank" rel="noopener">B-trees</a>. Exceptions: Indexes on spatial data types use R-trees;  <code>MEMORY</code>  tables also support  <a href="https://dev.mysql.com/doc/refman/5.6/en/glossary.html#glos_hash_index" title="hash index" target="_blank" rel="noopener">hash indexes</a>;  <code>InnoDB</code>  uses inverted lists for  <code>FULLTEXT</code>  indexes.</p>
+</blockquote>
+<p>通常情况下， 索引使用的描述如下。hash类型索引(使用在<code>MEMORY</code>表中)的详细描述如下<a href="https://dev.mysql.com/doc/refman/5.6/en/index-btree-hash.html" title="8.3.8 Comparison of B-Tree and Hash Indexes" target="_blank" rel="noopener">Section 8.3.8, “Comparison of B-Tree and Hash Indexes”</a></p>
+<blockquote>
+<p>In general, indexes are used as described in the following discussion. Characteristics specific to hash indexes (as used in  <code>MEMORY</code>  tables) are described in  <a href="https://dev.mysql.com/doc/refman/5.6/en/index-btree-hash.html" title="8.3.8 Comparison of B-Tree and Hash Indexes" target="_blank" rel="noopener">Section 8.3.8, “Comparison of B-Tree and Hash Indexes”</a>.</p>
+</blockquote>
+<p>Mysql在以下情况下使用索引:</p>
+<ul>
+<li>迅速的匹配where内容来查找行信息</li>
+<li>过滤行数据，如果需要在多个索引间做选择，mysql通常使用查找最小行数的索引(the most  <a href="https://dev.mysql.com/doc/refman/5.6/en/glossary.html#glos_selectivity" title="selectivity" target="_blank" rel="noopener">selective</a>  index)</li>
+<li>如果一个表有一个多列索引，最左前缀匹配方法用来寻找表行，比方说，如果你有一个3列索引 (col1,col2,col3)， 那么你就有了(col1),(col1,col2),(col1,col2,col3) 3个索引来匹配搜索。可以查看更多<a href="https://dev.mysql.com/doc/refman/5.6/en/multiple-column-indexes.html" target="_blank" rel="noopener">Section 8.3.5, “Multiple-Column Indexes”</a></li>
+<li>当使用join搜索其他表的数据的时候,如果他们列声明了同样的类型和大小，MySql能更有效的使用索引，比方，<code>VARCHAR</code> <code>CHAR</code>如果声明了同样的size，MySQL会认为他们是同样的，比方说varchar(10) 和char(10)是被认为同一个，varchar(10) 和char(15)则不会。 和其他非二进制的字符串相比，每一列都应当使用相同的字符集，比方说，使用<code>utf8</code>和<code>latin1</code>的列不能使用索引。比较不相似的列(比方比较sting和number)，如果二者之间不能不通过转换直接比较，可能不能使用得到索引，比方给个数字类型的1，它可能和string格式的’1’，’ 1’，’00001’，’01.e1’`相等，但是并不能使用得到string类型字段上的索引。</li>
+<li></li>
+</ul>
+<blockquote>
+<p>MySQL uses indexes for these operations:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>To find the rows matching a  <code>WHERE</code>  clause quickly.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>To eliminate rows from consideration. If there is a choice between multiple indexes, MySQL normally uses the index that finds the smallest number of rows (the most  <a href="https://dev.mysql.com/doc/refman/5.6/en/glossary.html#glos_selectivity" title="selectivity" target="_blank" rel="noopener">selective</a>  index).</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>If the table has a multiple-column index, any leftmost prefix of the index can be used by the optimizer to look up rows. For example, if you have a three-column index on  <code>(col1, col2, col3)</code>, you have indexed search capabilities on  <code>(col1)</code>,  <code>(col1, col2)</code>, and  <code>(col1, col2, col3)</code>. For more information, see  <a href="https://dev.mysql.com/doc/refman/5.6/en/multiple-column-indexes.html" title="8.3.5 Multiple-Column Indexes" target="_blank" rel="noopener">Section 8.3.5, “Multiple-Column Indexes”</a>.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>To retrieve rows from other tables when performing joins. MySQL can use indexes on columns more efficiently if they are declared as the same type and size. In this context,  <a href="https://dev.mysql.com/doc/refman/5.6/en/char.html" title="11.4.1 The CHAR and VARCHAR Types" target="_blank" rel="noopener"><code>VARCHAR</code></a>  and  <a href="https://dev.mysql.com/doc/refman/5.6/en/char.html" title="11.4.1 The CHAR and VARCHAR Types" target="_blank" rel="noopener"><code>CHAR</code></a>  are considered the same if they are declared as the same size. For example,  <code>VARCHAR(10)</code>  and  <code>CHAR(10)</code>  are the same size, but<code>VARCHAR(10)</code>  and  <code>CHAR(15)</code>  are not.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>   For comparisons between nonbinary string columns, both columns should use the same character set. For example, comparing a  <code>utf8</code>  column with a  <code>latin1</code>column precludes use of an index.</p>
+</blockquote>
+<blockquote>
+<p>   Comparison of dissimilar columns (comparing a string column to a temporal or numeric column, for example) may prevent use of indexes if values cannot be compared directly without conversion. For a given value such as  <code>1</code>  in the numeric column, it might compare equal to any number of values in the string column such as  <code>&#39;1&#39;</code>,  <code>&#39; 1&#39;</code>,  <code>&#39;00001&#39;</code>, or  <code>&#39;01.e1&#39;</code>. This rules out use of any indexes for the string column.</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>To find the  <a href="https://dev.mysql.com/doc/refman/5.6/en/group-by-functions.html#function_min" target="_blank" rel="noopener"><code>MIN()</code></a>  or  <a href="https://dev.mysql.com/doc/refman/5.6/en/group-by-functions.html#function_max" target="_blank" rel="noopener"><code>MAX()</code></a>  value for a specific indexed column  _<code>key_col</code>_. This is optimized by a preprocessor that checks whether you are using  <code>WHERE  _`key_part_N`_=  _`constant`_</code>  on all key parts that occur before  _<code>key_col</code>_  in the index. In this case, MySQL does a single key lookup for each  <a href="https://dev.mysql.com/doc/refman/5.6/en/group-by-functions.html#function_min" target="_blank" rel="noopener"><code>MIN()</code></a>  or  <a href="https://dev.mysql.com/doc/refman/5.6/en/group-by-functions.html#function_max" target="_blank" rel="noopener"><code>MAX()</code></a>  expression and replaces it with a constant. If all expressions are replaced with constants, the query returns at once. For example:</li>
+</ul>
+</blockquote>
+<pre><code><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MIN</span>(key_part2),<span class="keyword">MAX</span>(key_part2)</span><br><span class="line">  <span class="keyword">FROM</span> tbl_name <span class="keyword">WHERE</span> key_part1=<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<ul>
+<li>To sort or group a table if the sorting or grouping is done on a leftmost prefix of a usable index (for example,  <code>ORDER BY  _`key_part1`_,  _`key_part2`_</code>). If all key parts are followed by  <code>DESC</code>, the key is read in reverse order. See  <a href="https://dev.mysql.com/doc/refman/5.6/en/order-by-optimization.html" title="8.2.1.13 ORDER BY Optimization" target="_blank" rel="noopener">Section 8.2.1.13, “ORDER BY Optimization”</a>, and  <a href="https://dev.mysql.com/doc/refman/5.6/en/group-by-optimization.html" title="8.2.1.14 GROUP BY Optimization" target="_blank" rel="noopener">Section 8.2.1.14, “GROUP BY Optimization”</a>.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>In some cases, a query can be optimized to retrieve values without consulting the data rows. (An index that provides all the necessary results for a query is called a<a href="https://dev.mysql.com/doc/refman/5.6/en/glossary.html#glos_covering_index" title="covering index" target="_blank" rel="noopener">covering index</a>.) If a query uses from a table only columns that are included in some index, the selected values can be retrieved from the index tree for greater speed:</li>
+</ul>
+</blockquote>
+<blockquote>
+   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> key_part3 <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> key_part1=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>Indexes are less important for queries on small tables, or big tables where report queries process most or all of the rows. When a query needs to access most of the rows, reading sequentially is faster than working through an index. Sequential reads minimize disk seeks, even if not all the rows are needed for the query. See  <a href="https://dev.mysql.com/doc/refman/5.6/en/table-scan-avoidance.html" title="8.2.1.19 Avoiding Full Table Scans" target="_blank" rel="noopener">Section 8.2.1.19, “Avoiding Full Table Scans”</a>  for details.</p>
+</blockquote>
+<p> Written with <a href="https://stackedit.io/" target="_blank" rel="noopener">StackEdit</a>.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/12/mysql索引/" data-id="cjt4sdp3a0000qupvd0vne7b6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/22/简单http协议/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/12/mysql索引/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/简单http协议/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/21/java first look/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/21/test/">test</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
